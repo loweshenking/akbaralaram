@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengingat Tugas Mahasiswa - UDINUS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header dengan Logo -->
+    <div class="header-section">
+      <h1>Pengingat Tugas Mahasiswa</h1>
+      <img src="udinus.jpg" alt="Logo Udinus" class="app-logo">
+      <p id="quote-text" class="quote-style"></p>
+    </div>
+
+    <!-- Gamifikasi: Level & Progress Bar XP -->
+    <div class="gamification-card">
+      <div class="level-info">
+        <span id="user-level" class="level-badge">⭐ Level 1: MABA</span>
+        <span id="user-xp-text" class="xp-text">0 / 100 XP</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+      </div>
+    </div>
+    
+    <!-- Form Tambah Tugas -->
+    <form id="task-form">
+      <input type="text" id="task-title" placeholder="Nama Tugas / Mata Kuliah" required>
+      
+      <div class="datetime-group">
+        <input type="date" id="task-deadline" required>
+        <input type="time" id="task-time" required>
+      </div>
+
+      <select id="task-priority" required>
+        <option value="" disabled selected>Pilih Kategori Tugas</option>
+        <option value="🔥 Ujian / Kuis">🔥 Ujian / Kuis</option>
+        <option value="👥 Tugas Kelompok">👥 Tugas Kelompok</option>
+        <option value="📝 Laporan / Individu">📝 Laporan / Individu</option>
+      </select>
+
+      <button type="submit">Tambah Tugas</button>
+    </form>
+
+    <!-- Tombol Hentikan Alarm -->
+    <div id="stop-alarm-container" style="display: none; margin-bottom: 20px;">
+      <button id="stop-alarm-btn" class="stop-btn">🔔 Hentikan Bunyi Alarm</button>
+    </div>
+
+    <!-- Filter Kategori -->
+    <div class="filter-section">
+      <button class="filter-btn active" onclick="setFilter('all')">Semua</button>
+      <button class="filter-btn" onclick="setFilter('🔥 Ujian / Kuis')">Kuis</button>
+      <button class="filter-btn" onclick="setFilter('👥 Tugas Kelompok')">Kelompok</button>
+      <button class="filter-btn" onclick="setFilter('📝 Laporan / Individu')">Laporan</button>
+    </div>
+
+    <!-- Daftar Tugas -->
+    <ul id="task-list"></ul>
+  </div>
+
+  <!-- Audio Alarm Khas Dinusian -->
+  <audio id="alarm-sound" src="alarm.mp3" loop preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
